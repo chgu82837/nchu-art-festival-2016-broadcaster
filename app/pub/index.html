@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Broadcaster</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <div class="centered-box">
+    <h2 class="ui center aligned icon header">
+      <i class="circular send icon"></i>
+      興大藝術節
+    </h2>
+    <div class="ui massive action input">
+      <input id="input" type="text" placeholder="你想告訴大家的話語">
+      <button id="send" class="ui button">傳送</button>
+    </div>
+    <div class="small space"></div>
+    <a href="receiver.html" class="ui button">前往接收端</a>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+  <script>
+    var socket = io();
+    jQuery(document).ready(function() {
+      jQuery('#send').click(function() {
+        socket.emit('msg', jQuery('#input').val());
+      });
+    })
+  </script>
+</body>
+</html>
