@@ -6,7 +6,16 @@
   align-items: center;
   justify-content: center;
 }
+.centered-inner {
+  text-align: center;
+  position: relative;
+  top: -15%;
+}
 
 .small.space {
   height: 20px;
+}
+
+#message_box {
+  font-size: 19vw;
 }
