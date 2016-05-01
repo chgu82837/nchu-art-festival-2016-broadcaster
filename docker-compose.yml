@@ -5,8 +5,9 @@ volumes:
 services:
   main: &main
     build: .
-    ports: ['80:3000']
+    ports: ['127.0.0.1:8002:3000']
     command: [npm, run, main]
+    restart: always
   npm: 
     <<: *main
     volumes:
