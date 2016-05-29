@@ -1,13 +1,16 @@
 version: '2'
+networks:
+  vhosts:
+    external: 
+      name: nginx_vhosts
 volumes:
   node_modules:
     driver: local
 services:
   main: &main
     build: .
-    ports: ['127.0.0.1:8002:3000']
+    ports: ['80:3000']
     command: [npm, run, main]
-    restart: always
   npm: 
     <<: *main
     volumes:
@@ -23,4 +26,11 @@ services:
      - .:/usr/src/outside
     working_dir: /usr/src
     command: sh
+  nchu_art_festival:
+    <<: *main
+    ports: []
+    networks:
+    - vhosts
+    restart: always
+
 
